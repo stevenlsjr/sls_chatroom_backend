@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 
+from landing_page.views import index
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('chatroom/', include('chatroom.urls')),
+    path('', index, name='index'),
+    path('admin/', admin.site.urls,),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('api/v0/', include('chatroom.urls')),
     path('docs/', include_docs_urls(title='My API title'))
 ]
+ 
