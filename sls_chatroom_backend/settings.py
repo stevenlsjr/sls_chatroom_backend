@@ -25,7 +25,9 @@ SECRET_KEY = ')7wjimvszl83*ty2d8^sb$a=!1%!b*=q((d#a@ou*n)6n(z=q6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost', '127.0.0.1', '0.0.0.0'
+]
 
 
 # Application definition
@@ -82,16 +84,16 @@ WSGI_APPLICATION = 'sls_chatroom_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'sls_chatroom_backend',
         'USER': 'postgres',
-        'HOST': 'localhost',
-        'PORT': 5434,
+        'PORT': 5432,
     }
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -32,5 +32,7 @@ class TestMessage(APITestCase):
     def test_message_delte(self):
         pk = self.message.pk
         res = self.client.delete(reverse('chatroom:message-detail', kwargs={'pk': self.message.id}))
-        assert res.status_code == status.HTTP_204_NO_CONTENT
+        assert res.status_code in [200, 202, 204]
         assert Message.objects.filter(pk=pk).count() == 0
+
+

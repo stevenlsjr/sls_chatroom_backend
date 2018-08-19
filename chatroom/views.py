@@ -13,14 +13,14 @@ User = get_user_model()
 
 
 class ConverstionViewSet(viewsets.ModelViewSet):
+    """
+    Viewset for Conversation model
+    """
     queryset = Conversation.objects.all()
     serializer_class = ConversationSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
-    # @action(methods=['get'], detail=True)
-    # def messages(self, request, pk=None):
-    #     pass
-
+    
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
