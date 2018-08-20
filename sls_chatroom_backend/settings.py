@@ -29,7 +29,6 @@ ALLOWED_HOSTS = [
     'localhost', '127.0.0.1', '0.0.0.0'
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,17 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-
-    'landing_page',
     'chatroom',
-
 ]
 
 MIDDLEWARE = [
+'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -139,3 +138,9 @@ REST_FRAMEWORK = {
 
     ),
 }
+
+CORS_ORIGIN_WHITELIST = (
+    '0.0.0.0:8080',
+    'localhost:8080',
+    'localhost:8000',
+)

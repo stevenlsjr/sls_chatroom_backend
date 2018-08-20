@@ -26,6 +26,18 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
+    @action(['get'], detail=False)
+    def identity(self, request):
+        """
+        returns the user details of the authenticated user
+        """
+        if request.user and request.user.is_authenticated:
+            serializer = self.serializer_class(request.user)
+            return Response(serializer.data)
+        else:
+            return Response({'details': 'not authenticated'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
 
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all()
