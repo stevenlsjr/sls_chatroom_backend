@@ -1,0 +1,14 @@
+{% extends "rest_framework/base.html" %}
+
+
+{% block userlinks %}
+    {% if not user.is_authenticated %}
+    <a href="{% url 'login' %}?next=/" class="navbar-text">Login</a>
+    {% else %}
+    {{ block.super }}
+    <a href="{% url 'logout' %}" class="navbar-text">Sign out</a>
+
+    {% endif %}
+    <a class="navbar-text" href="http://localhost:8080">Frontend</a>
+{% endblock userlinks %}
+    
