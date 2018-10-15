@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - "127.0.0.1:5434:5432"
+    environment:
+      - "PGDATA=/var/lib/postgresql/data/pgdata"
+      - "POSTGRES_DB=sls_chatroom_backend"
+    volumes:
+      - "dbdata:/var/lib/postgresql/data/pgdata"
+  wsgi:
+    image: stevenlsjr/sls_chatroom_backend
+    command: gunicorn -c config/gunicorn.py 'sls_chatroom_backend.wsgi'
+    environment:
+      - "DJANGO_SETTINGS_MODULE:sls_chatroom_backend.docker_settings"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:
+  dbdata:
