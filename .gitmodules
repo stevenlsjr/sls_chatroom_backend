@@ -1,0 +1,3 @@
+[submodule "client"]
+	path = sls-chatroom
+	url = https://github.com/stevenlsjr/sls-chatroom.git
