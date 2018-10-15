@@ -61,7 +61,7 @@ ROOT_URLCONF = 'sls_chatroom_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'sls_chatroom_backend/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,6 +138,8 @@ REST_FRAMEWORK = {
 
     ),
 }
+
+LOGOUT_REDIRECT_URL = '/accounts/login?next=/'
 
 CORS_ORIGIN_WHITELIST = (
     '0.0.0.0:8080',
